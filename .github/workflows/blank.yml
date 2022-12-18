@@ -1,0 +1,44 @@
+name: Make-Curl-Android
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    - uses: nttld/setup-ndk@v1
+      id: setup-ndk
+      with:
+       ndk-version: r22b
+       add-to-path: false
+       
+    - name: Checking Files
+      run: |
+        tree .
+        
+    - name: Dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install autoconf
+        sudo apt-get autoremove automake
+        sudo apt-get install automake
+        sudo apt-get update
+        sudo apt-get install libtool
+       
+    - name: Building
+      run: |
+        echo "${{ steps.setup-ndk.outputs.ndk-path }}"
+        cd building-scripts
+        NDK_ROOT=${{ steps.setup-ndk.outputs.ndk-path }}
+        chmod 755 build-curl.sh        
+        ./build-curl.sh $NDK_ROOT [api=21] [arch=arm] [no-ssl] [no-zlib]
+        ls -lah
+        tree .
