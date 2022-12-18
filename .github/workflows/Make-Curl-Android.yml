@@ -41,4 +41,7 @@ jobs:
         chmod 755 build-curl.sh        
         ./build-curl.sh $NDK_ROOT [api=21] [arch=arm] [no-ssl] [no-zlib]
         ls -lah
+        
+    - name: Checking Files end
+      run: |
         tree .
