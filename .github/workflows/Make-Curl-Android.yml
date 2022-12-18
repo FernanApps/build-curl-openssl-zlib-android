@@ -24,8 +24,13 @@ jobs:
       run: |
         NDK_ROOT=${{ steps.setup-ndk.outputs.ndk-path }}
         cd $NDK_ROOT
-        ls -lah
-        tree .
+        ls    
+        echo "................................. Atras "
+        cd ..
+        ls
+        echo "................................. Atras 2"
+        cd ..
+        ls
 
         
     - name: Dependencies
