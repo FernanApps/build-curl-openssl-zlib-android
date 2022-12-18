@@ -25,6 +25,9 @@ jobs:
         NDK_ROOT=${{ steps.setup-ndk.outputs.ndk-path }}
         cd $NDK_ROOT
         ls    
+        echo "................................. ndk-build "
+        cd ndk-build
+        ls
         echo "................................. Atras "
         cd ..
         ls
