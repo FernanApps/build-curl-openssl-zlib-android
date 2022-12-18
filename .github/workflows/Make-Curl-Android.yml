@@ -22,7 +22,11 @@ jobs:
        
     - name: Checking Files
       run: |
+        NDK_ROOT=${{ steps.setup-ndk.outputs.ndk-path }}
+        cd $NDK_ROOT
+        ls -lah
         tree .
+
         
     - name: Dependencies
       run: |
