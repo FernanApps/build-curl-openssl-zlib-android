@@ -1,4 +1,4 @@
-# Building curl, openssl, and zlib for android
+# Building curl, openssl, and zlib for android.
 
 This repo has been made to help building curl, openssl, and zlib libraries for android.
 
